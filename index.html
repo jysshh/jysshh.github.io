@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="js/echarts.min.js"></script>
+    <script src="js/infographic.js"></script>
+  </head>
+  <body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div id="main" style="width: 800px;height:600px;margin:0 auto;background-color: blanchedalmond;"></div>
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('main'),'infographic');
+
+      // 指定图表的配置项和数据
+      var option = {
+        title:{
+          top: '5%',
+          text:'建成区各类型公园的绿地数量',
+          left: 'center',
+          fontSize:30
+        },
+
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    top: '90%',
+    left: 'center'
+  },
+  graphic: [
+   
+    {
+      type: 'group',
+      left: '2%',
+      top: '15%',
+      children: [
+        {
+          type: 'rect',
+          z: 100,
+          left: 'center',
+          top: 'middle',
+          shape: {
+            width: 240,
+            height: 90
+          },
+          style: {
+            fill: '#fff',
+            stroke: '#555',
+            lineWidth: 1,
+            shadowBlur: 8,
+            shadowOffsetX: 3,
+            shadowOffsetY: 3,
+            shadowColor: 'rgba(0,0,0,0.2)'
+          }
+        },
+        {
+          type: 'text',
+          z: 100,
+          left: 'center',
+          top: 'middle',
+          style: {
+            fill: '#333',
+            width: 220,
+            overflow: 'break',
+            text: '建成区包含33个城市：北京、上海、天津、重庆、宁波、大连、青岛、厦门、深圳广州、贵阳、哈尔滨、海口、杭州、西安、西宁、银川、长春、长沙、乌鲁木齐、武汉、兰州、南昌、郑州、合肥、南宁、沈阳、石家庄、太原、呼和浩特、济南、昆明、南京.',
+            font: '12px Microsoft YaHei'
+          }
+        }
+      ]
+    }
+  ],
+  series: [
+    {
+      name: '绿地数量',
+      type: 'pie',
+      radius: ['40%', '70%'],
+      avoidLabelOverlap: false,
+      label: {
+        show: false,
+        position: 'center'
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: '30',
+          fontWeight: 'bold'
+        }
+      },
+      labelLine: {
+        show: false
+      },
+      data: [
+        { value: 1998, name: '综合公园' },
+        { value: 16371, name: '社区公园' },
+        { value: 25529, name: '游园' },
+       
+      ]
+    }
+  ]
+};
+
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+    </script>
+  </body>
+</html>
